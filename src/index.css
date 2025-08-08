@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Jindal IVF Brand Colors */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 15%;
+
+    /* Primary: Deep Purple from branding */
+    --primary: 302 52% 37%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 302 48% 47%;
+    --primary-dark: 302 58% 27%;
+
+    /* Secondary: #F99D1C Orange for navigation */
+    --secondary: 35 95% 54%;
+    --secondary-foreground: 0 0% 0%;
+    --secondary-light: 35 80% 65%;
+    --secondary-dark: 35 90% 45%;
+
+    /* Accent: Golden Yellow */
+    --accent: 45 95% 60%;
+    --accent-foreground: 240 10% 15%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 240 5% 45%;
+
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 140 65% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 35 85% 55%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 302 52% 37%;
+
+    --foreground-strong: 0 0% 0%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--secondary-light)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--background)) 0%, hsl(var(--muted)) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(var(--primary) / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(var(--primary) / 0.1), 0 2px 4px -1px hsl(var(--primary) / 0.06);
+    --shadow-lg: 0 10px 15px -3px hsl(var(--primary) / 0.1), 0 4px 6px -2px hsl(var(--primary) / 0.05);
+    --shadow-xl: 0 20px 25px -5px hsl(var(--primary) / 0.1), 0 10px 10px -5px hsl(var(--primary) / 0.04);
+
+    /* Sidebar - Orange #F99D1C */
+    --sidebar-background: 35 95% 54%;
+    --sidebar-foreground: 0 0% 0%;
+    --sidebar-primary: 35 90% 49%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 35 85% 49%;
+    --sidebar-accent-foreground: 0 0% 0%;
+    --sidebar-border: 35 90% 45%;
+    --sidebar-ring: 35 100% 60%;
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .dark {
+    --background: 240 10% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 240 10% 10%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 240 10% 10%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 302 52% 58%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 302 48% 68%;
+    --primary-dark: 302 58% 48%;
+
+    --secondary: 35 95% 54%;
+    --secondary-foreground: 0 0% 0%;
+    --secondary-light: 35 80% 65%;
+    --secondary-dark: 35 90% 45%;
+
+    --accent: 45 95% 70%;
+    --accent-foreground: 240 10% 15%;
+
+    --muted: 240 5% 15%;
+    --muted-foreground: 240 5% 65%;
+
+    --destructive: 0 75% 65%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 140 65% 55%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 35 85% 65%;
+    --warning-foreground: 240 10% 15%;
+
+    --border: 240 5% 20%;
+    --input: 240 5% 20%;
+    --ring: 302 52% 58%;
+
+    --foreground-strong: 0 0% 0%;
+
+    /* Sidebar - Dark mode */
+    --sidebar-background: 35 95% 54%;
+    --sidebar-foreground: 0 0% 0%;
+    --sidebar-primary: 35 90% 49%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 35 85% 49%;
+    --sidebar-accent-foreground: 0 0% 0%;
+    --sidebar-border: 35 90% 45%;
+    --sidebar-ring: 35 100% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary-dark));
+  }
+}
+
+@layer utilities {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+  
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+  
+  .shadow-brand {
+    box-shadow: var(--shadow-md);
+  }
+  
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  
+  .transition-spring {
+    transition: var(--transition-spring);
+  }
+
+  .text-gradient {
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
